@@ -1,5 +1,7 @@
+const https = require("https");
 const http = require("http");
 const fs = require("fs");
+const path = require("path");
 const { parse } = require("querystring");
 const Customer = require("./model/customer");
 const knex = require("./db").knex;
@@ -21,6 +23,12 @@ process.on("SIGUSR2", exitHandler.bind(null, { exit: true }));
 
 //catches uncaught exceptions
 process.on("uncaughtException", exitHandler.bind(null, { exit: true }));
+
+var options = {
+  key: fs.readFileSync(path.resolve(__dirname, '../privkey.pem')),
+  cert: fs.readFileSync(path.resolve(__dirname, '../cert.pem')),
+}
+
 http
   .createServer(function (req, res) {
     console.log('entro ', req.method, " ", req.url);

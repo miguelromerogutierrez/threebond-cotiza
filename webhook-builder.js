@@ -6,12 +6,17 @@ const exec = require('child_process').exec;
 http
   .createServer(function(req, res) {
     exec(
-      `curl -X POST -d {} https://api.netlify.com/build_hooks/5ee5174df938de9d94281399`,
+      `cd ${repo} && yarn build`,
       (error, stdout, stderr) => {
         if (error) {
           console.error(`exec error: ${error}`);
           return;
         }
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+        exec(
+          `cd ~/threebond-site/threebond-website/public/ && git add . && git commit -m "save chages" && git push origin master`
+        )
       }
     );
 
