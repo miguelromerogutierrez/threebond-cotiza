@@ -29,8 +29,8 @@ function sendEmail(data) {
 
   const mailOptions = {
     from: 'threebonddev@gmail.com', // sender address
-    to: ['miguel.angel.romero.gtz@gmail.com'], // list of receivers
-    // to: ['lgarcia@threebond.com', 'ynishioka@threebond.com', 'omartinez@threebond.com', 'orodriguez@threebond.com'], // list of receivers
+    // to: ['miguel.angel.romero.gtz@gmail.com'], // list of receivers
+    to: ['lgarcia@threebond.com', 'ynishioka@threebond.com', 'omartinez@threebond.com', 'orodriguez@threebond.com'], // list of receivers
     subject: 'Nueva solicitud de cliente', // Subject line
     html: `<div>
 	<p>Una nueva solicitud de cliente ha sido registrada</p>
